@@ -94,7 +94,7 @@ endfunction
 "
 function! AS_M_DetectActiveWindow (filename)
     let shortname = fnamemodify(a:filename,":t")
-    let active_window = system('osascript -e ''tell application "Terminal" to every window whose (name begins with "'.shortname.' " and name ends with "VIM")''')
+    let active_window = system('osascript -e ''tell application "MacVim" to every window whose (name begins with "'.shortname.' " and name ends with "VIM")''')
     let active_window = substitute(active_window, '^window id \d\+\zs\_.*', '', '')
     return (active_window =~ 'window' ? active_window : "")
 endfunction
@@ -103,7 +103,7 @@ endfunction
 " Switch to terminal window specified...
 "
 function! AS_M_SwitchToActiveWindow (active_window)
-    call system('osascript -e ''tell application "Terminal" to set frontmost of '.a:active_window.' to true''')
+    call system('osascript -e ''tell application "MacVim" to set frontmost of '.a:active_window.' to true''')
 endfunction
 
 
